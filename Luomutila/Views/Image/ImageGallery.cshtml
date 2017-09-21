@@ -1,0 +1,88 @@
+﻿@model LuomuTila.Models.LuomuTilaImages
+
+@{
+    ViewBag.Title = "Koskenkorvan Luomutila";
+}
+
+<script src="@Url.Content("~/js/imageslideshow.js")"></script>
+<div>
+    <h2 style="text-align:center">Kuvia Tilasta</h2>
+    @if(Session["Username"] != null) {
+        <button type="button" class="btn btn-success" onclick="loadnewfile()">Lataa Kuva</button>
+    }
+</div>
+<div class="slideshow-container">
+    @foreach(var img in Model.Images) {
+        <div class="tilaslides">            
+            <a class="prev" onclick="plusSlides(-1)"></a>
+            <img src="@Url.Content(img)" class="tableImg" />
+            <a class="next" onclick="plusSlides(1)"></a>  
+        </div>
+    }   
+
+</div>
+
+
+
+
+<div>
+<h2 style="text-align:center">Videot</h2>
+    @if(Session["Username"] != null) {
+        <button type="button" class="btn btn-success" onclick="loadnewVideo()">Lataa Video</button>
+    }
+</div>
+<div>
+    @foreach(var video in Model.Videos) {
+        <video class="videodiv" controls>
+            <source src="@Url.Content(video)" type="video/mp4" />
+        </video>
+    }
+
+</div>
+
+</div> <!-- /container -->
+
+<div class="footer">
+    <p>&copy; Company 2014</p>
+</div>
+
+
+<!-- Upload new picture modal-->
+<div class="modal fade" id="uploadPic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Lataa uusi kuva</h4>
+            </div>
+            <div class="modal-body">
+                @using(Html.BeginForm("FileUpload", "Image", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+                    <label for="file">Lataa kuva: </label>
+                    <input type="file" name="file" id="file" />
+                    <input type="submit" value="lataa" class="submit" />
+                    <input type="button" class="btn btn-default" value="Sulje" data-dismiss="modal" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Upload new video modal-->
+<div class="modal fade" id="uploadVid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Lataa uusi kuva</h4>
+            </div>
+            <div class="modal-body">
+                @using(Html.BeginForm("VideoUpload", "Image", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+                    <label for="file">Lataa kuva: </label>
+                    <input type="file" name="video" id="video" value="Hae"/>
+                    <input type="submit" value="lataa" class="submit" />
+                    <input type="button" class="btn btn-default" value="Sulje" data-dismiss="modal" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

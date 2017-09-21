@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    
+    
+    <!-- Bootstrap -->
+   <!-- <link href="@Url.Content("~/css/bootstrap.css")" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="@Url.Content("~/css/jumbotron-narrow.css")" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/css/custom.css")" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-1.12.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/js/mapinit.js"></script>
+    
+</head>
+    <body>
+    <div class="container">
+      <div class="header">
+          
+        <ul class="nav nav-pills pull-right">
+            <li class="kotiDropdown">
+                <a href="#">Koti</a>
+                <ul class="koticontent" style="background-color: darkolivegreen;">
+                    <li><a  style="color: white;" href="@Url.Action("Index", "Home")">Etusivu</a></li>
+                    <li><a  style="color: white;" href="@Url.Action("AppointmentForm", "Application")">Marjojen poiminta</a></li>
+                    <li><a  style="color: white;" href="@Url.Action("Openinghours", "Application")">Aukioloajata</a></li>
+                    <li><a  style="color: white;" href="@Url.Action("PricesTable", "Application")">Hinnasto</a></li>
+                    <li><a  style="color: white;" href="@Url.Action("GeneralKnowledge", "Application")">Yleistä marjoista</a></li>
+                    <li><a  style="color: white;" href="@Url.Action("SummerApplicationForm", "Application")">Kesätöihin</a></li>
+                    <li><a  style="color: white;" href="@Url.Action("Maps", "Home")">Ajo ohjeet</a></li>
+                </ul>
+            </li>
+          <li>@Html.ActionLink("Meistä", "About", "Home")</li>
+          <li>@Html.ActionLink("Ota Yhteyttä", "Contact", "Home")</li>
+          <li>@Html.ActionLink("KuvaGalleria", "ImageGallery", "Image")</li>
+
+          @if(Session["Username"] != null) {
+            <li>@Html.ActionLink("Kirjaudu ulos", "Logout", "Account")</li>
+          } else {
+            <li><button type="button" onclick="login()">Kirjaudu</button></li>
+          }
+
+        </ul>
+        
+            @if(Session["Username"] != null)
+            {
+                <h4>pääkäyttäjä</h4>
+            } else
+            {
+                <h3 class="text-muted" style="text-align:center">@ViewBag.Title</h3>
+            }
+        
+      </div>
+        @RenderBody()
+        <script src="@Url.Content("~/js/bootstrap.js")"></script>
+        <script src="@Url.Content("~/js/custom.js")"></script>
+        <script src="@Url.Content("~/js/imageslideshow.js")"></script>  
+        
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="@Url.Content("~/js/loginmodal.js")"></script>
+        
+
+    </body>
+</html>
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Kirjaudu</h4>
+            </div>
+            <div class="modal-body">
+                @using(Html.BeginForm()) {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-3">Käyttäjätunnus</div>
+                        @Html.ValidationSummary(true)
+                        <div class="col-md-6"><input class="form-control" type="text" id="username" /></div>
+
+                    </div>
+                            <div class="row">
+                                <div class="col-md-3">Salasana</div>
+                                <div class="col-md-6"><input class="form-control" type="password" id="password" /></div>
+                            </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+                <button type="button" class="btn btn-primary" id="kirjaudu">Kirjaudu</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LuomuTila.Models.AppointmentForm>
+
+@{
+    ViewBag.Title = "AppointmentForm";
+}
+
+<div class="firstPageImg">
+    <img src="~/Images/DSC_0530-min.JPG" width="650" height="300" />
+</div>
+<br/>
+<div class="appointForm">
+    <h2 style="text-align:center;">Varaa päivä keräämiselle</h2>
+    <br />
+    @using(Html.BeginForm("AppointmentFormPost", "Application", FormMethod.Post, new { id = "form-id" })) {
+        <div class="form-group appointDiv" style="width:300px; margin:auto">
+            <label for:Name>Nimi: </label>
+            <input type="text" class="form-control" id="Name" placeholder="etunimi sukunimi" name="Name" />
+        </div>
+        <div class="form-group appointDiv" style="width:300px; margin:auto">
+            <label for:Puhelin>Puhelin: </label>
+            <input type="text" class="form-control" id="Phone" placeholder="040123456" name="Phone" />
+        </div>
+        <div class="form-group appointDiv" style="width:300px; margin:auto">
+            <label for:Email>Sähköposti: </label>
+            <input type="text" class="form-control" id="Email" placeholder="esimerkki@mail.com" name="Email" />
+        </div>
+        <div class="form-group appointText" style="width:300px; margin:auto">
+            <label>Lisätiedot: </label>
+            <textarea rows="6" cols="100" type="text" class="form-control" id="Descrption" name="Description"></textarea>
+        </div>
+        
+        <br />
+        <div class="form-group appointDiv" style="width:300px; margin:auto">
+            <label>Tulopäivä</label>
+            <div class="input-group date">
+                <input type="text" class="form-control" id="datetimepicker3" name="showingdate" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        
+    }
+
+    <button type="submit" form="form-id" class="btn btn-success reserve">Lähetä</button>
+
+</div> <!-- /container -->
+
+<div class="footer">
+    <p>&copy; Company 2014</p>
+</div>

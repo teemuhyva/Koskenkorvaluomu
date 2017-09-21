@@ -1,0 +1,145 @@
+﻿body {
+    background-image: url('../images/DSC_0668-min.JPG');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    background-color: white;
+    max-width: 1500px;
+    width: 1150px;
+    min-height: 900px;
+    margin:0 auto;
+    display:block;
+    overflow:auto;
+}
+
+
+.tableImg {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+#about {
+    width: 600px;
+    word-wrap: break-word;
+    left: 20%;
+}
+
+.general {
+    width: 300px;
+    word-wrap: break-word;
+     margin-left: 10%;
+}
+
+.appointForm {
+    width: 600px;
+    margin-left: 10%;
+}
+
+.additemButton {
+    margin-left: 10%;
+}
+
+.firstPageImg {
+    width: 60%;
+    margin: 0 auto;
+}
+
+table.prices {
+    margin:auto;
+    margin-top: 40px; 
+    width: 800px;
+    background-color: #f1f1c1;
+}
+
+#berryprice {
+    margin-left: 42%;
+}
+
+input {
+    text-align:center;
+}
+
+.appointDiv {
+    height: 80px;
+}
+
+.appointText {
+    height: 150px;
+}
+
+li.knowledge{
+    margin: 0 0 200px 0;
+}
+
+.reserve {
+   margin-left:60%;
+}
+
+.createform {
+     width: 600px;
+    margin-left: 25%;
+}
+
+.dateinput {
+    width: 300px;
+}
+
+.koticontent {
+    display:none;
+    position:absolute;
+    padding-left: 0px;
+}
+
+.kotiDropdown:hover .koticontent {
+    display:inline-block;
+    list-style-type: none;
+}
+
+.koticontent li {
+    white-space:nowrap;
+    margin: 0 0 7px 0;
+}
+
+
+.tilaslides {
+    display: none;
+    width: 500px;
+}
+
+.slideshow-container {
+    width: 500px;
+    position: center;
+    margin: auto;
+}
+
+.prev {
+    float: left;
+    padding: 16px;
+    margin-top: -20px;
+    background-color: black;
+}
+
+.next { 
+    float: right;
+    padding: 16px;
+    margin-top: -20px;
+    background-color: black;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+#googleMaps {
+    width: 50%;
+    height: 400px;
+}
+
+.videodiv {
+    height: 350px;
+    width: 200px;
+}

@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Luomutila";
+}
+
+<script src="@Url.Content("~/js/updateprices.js")"></script>
+
+<div class="firstPageImg">
+    <img src="~/Images/DSC_0530-min.JPG" width="650" height="300" />
+</div>
+
+<h2 id="berryprice">Hinnasto</h2>
+
+@if(Session["Username"] != null) {
+    <button type="button" class="btn btn-primary" id="addnewitemonpricelist" onclick="addnewitem()">Uusi tuote<span class="glyphicon glyphicon-plus-sign additemButton"></span></button>
+}
+
+<table class="table table-bordered prices" id="pricestable">
+    <thead>
+        <tr>
+            @if(Session["Username"] != null) {
+                <th>Toiminto</th>
+            }
+            <th>Marja</th>
+            <th>Euroa(Litra)</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+
+
+</div> <!-- /container -->
+
+<div class="footer">
+    <p>&copy; Company 2014</p>
+</div>
+
+<!-- modal for updating prices list-->
+<div class="modal fade" tabindex="-1" role="dialog" id="pricesTableDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Muokkaa tiedot</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">Marjalajike</div>
+                    <div class="col-md-6"><input class="form-control" id="pricesModal_berryname" readonly/></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Hinta</div>
+                    <div class="col-md-6"><input class="form-control" id="pricesModal_price" /></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="berryModalSave">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal for removing price-->
+<div class="modal fade" tabindex="-1" role="dialog" id="remotepriceDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Poista tieto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">Marjalajike</div>
+                    <div class="col-md-6"><input class="form-control" id="deleteModal_berryname" readonly /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Hinta</div>
+                    <div class="col-md-6"><input class="form-control" id="deleteModal_price" readonly/></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="berrymodalDelete">Poista</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Modal add new item-->
+<div class="modal fade" tabindex="-1" role="dialog" id="addpriceDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Poista tieto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3">Marjalajike</div>
+                    <div class="col-md-6"><input class="form-control" id="addModal_berryname"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Hinta</div>
+                    <div class="col-md-6"><input class="form-control" id="addModal_price"/></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="berrymodalAdd">Lisää</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

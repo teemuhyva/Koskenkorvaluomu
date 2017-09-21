@@ -1,0 +1,48 @@
+﻿@model LuomuTila.Models.User
+
+
+    <div class="firstPageImg">
+        <img src="~/Images/DSC_0540-min.JPG" width="650" height="300" />
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="general">
+                <h4>Marjojen poiminta</h4>
+                <p style="height:100px;">
+                    Tule itse poimimaan ja nauttimaan kesäsäästä tai voit myös pyytää poimimaan marjat puolestasi
+                    Täytä lomake alla olevasta linkistä niin tiedämme milloin olet tulossa niin osaamme hyvin varautua etukäteen
+                </p>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("AppointmentForm", "Application")'" style="width:90px;">Varaa aika</button>
+
+                <h4>Aukioloajat</h4>
+                <p style="height:50px;">Aukioloaikamme jolloin olemme avustamassa ja opastamassa</p>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Openinghours", "Application")'"  style="width:90px;">Ajat</button>
+
+                <h4>Hinnasto</h4>
+                <p style="height:70px;">Katso litrahinta per marjalajike. Myymme myös ämpäreitä joten voimme varautua sopivaan määrään mitä olet ilmoittanut</p>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("PricesTable", "Application")'" style="width:90px;">Hinnasto</button>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="general">
+                <h4>Yleistä Marjoista</h4>
+                <p style="height:100px;">Hieman yleistietoa ja sivistystä kaikille marjoista ja niiden terveysvaikutuksista ja lajikohtaisista sesonkiajoista</p>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("GeneralKnowledge", "Application")'" style="width:90px;">Yleistä</button>
+                <h4>Kesätöihin</h4>
+                <p style="height:50px;">Onko kesälomat? Hae meille kesätöihin.</p>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("SummerApplicationForm", "Application")'" style="width:89px;">Hae</button>
+                <h4>Ajo ohjeet</h4>
+                <p style="height:70px;">Ajo ohjeet meidän tilalle. </p>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Maps", "Home")'" style="width:89px;">Hae</button>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+<div class="footer">
+    <p>&copy; Company 2014</p>
+</div>
+

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LuomuTila.Models.Openingtimes>
+
+@{
+    ViewBag.Title = "Luomutila";
+}
+
+<h2>Aukioloajat</h2>
+
+<div class="firstPageImg">
+    <img src="~/Images/DSC_0530-min.JPG" width="650" height="300" />
+</div>
+
+<table class="table table-bordered prices">
+    <tr>
+        <th>Päivä</th>
+        <th>Auki</th> 
+        <th>Suljettu</th>
+    </tr>
+
+    @foreach(var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DayOfWeek)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Openinghours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Closinghours)
+            </td>
+        </tr>
+    }
+</table>

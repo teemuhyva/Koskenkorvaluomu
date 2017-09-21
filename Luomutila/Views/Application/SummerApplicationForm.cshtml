@@ -1,0 +1,61 @@
+﻿@model LuomuTila.Models.JobForm
+
+@{
+    ViewBag.Title = "Luomutila";
+}
+
+<div class="firstPageImg">
+    <img src="~/Images/DSC_0530-min.JPG" width="650" height="300" />
+</div>
+<br />
+<div class="createform">
+@using(Html.BeginForm("SummerApplicationForm", "Application", FormMethod.Post)) {
+            <h2>Kesätyöhakemus</h2>
+            <br />
+            <div class="form-group">
+                <label for:nimi />
+                <input type="text" class="form-control" id="nimi" placeholder="Nimi" name="firstname" />
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+            <div class="form-group">
+                <label for:email />
+                <input type="email" class="form-control" id="email" placeholder="Sähköposti" name="email" />
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="form-group">
+                <label for:phone />
+                <input type="text" class="form-control" id="phone" placeholder="puhelin" name="phone" />
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+            <div class="form-group">
+                <label for:age />
+                <input type="text" class="form-control" id="age" placeholder="Ikä" name="age" />
+                @Html.ValidationMessageFor(model => model.Age)
+            </div>
+            <div class="form-group dateinput">
+                <label>Aloituspäivä</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control" id="datetimepicker1" name="startingdate" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group dateinput">
+                <label>Lopetuspäivä</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control" id="datetimepicker2" name="enddate" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Lähetä hakemus</button>
+}
+    
+</div>
+
+</div> <!-- /container -->
+<div class="footer">
+    <p>&copy; Company 2014</p>
+</div>

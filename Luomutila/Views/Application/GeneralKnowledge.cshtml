@@ -1,0 +1,29 @@
+﻿@model IEnumerable<LuomuTila.Models.BerryKnowledge>
+
+@{
+    ViewBag.Title = "Luomutila";
+}
+
+<h2 style="text-align:center">Luomutilan marjat</h2>
+<ul class="media-list">
+    @foreach(var item in Model) {
+        <li class="media knowledge">
+            <div class="media-left">
+                <img class="media-object" src="~/Images/dsc_0656-min.jpg" style="width:200px; height:200px;" />
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">@Html.DisplayFor(modelItem => item.Berry)</h4>
+                <h2 class="media-heading">@Html.DisplayFor(modelItem => item.Titleusage)</h2>
+                <p>@Html.DisplayFor(modelItem => item.UsageKnowledge)</p>
+                <h2 class="media-heading">@Html.DisplayFor(modelItem => item.Titlecrowth)</h2>
+                <p>@Html.DisplayFor(modelItem => item.CrowthKnowledge)</p>
+                @if(Session["Username"] != null)
+                {
+
+                }
+            </div>
+        </li>
+        
+    }
+</ul>
+

@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KoskenkorvanLuomutilaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KoskenkorvanLuomutila.dbo.Appointment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Appointment_id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Collectdate" />
+            <PropertyRef Name="Addeddate" />
+          </Key>
+          <Property Name="Appointment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Berry" Type="nvarchar" MaxLength="10" />
+          <Property Name="Collect" Type="nvarchar" MaxLength="10" />
+          <Property Name="Amount" Type="decimal" Precision="1" Scale="1" />
+          <Property Name="Collectdate" Type="datetime" Nullable="false" />
+          <Property Name="Addeddate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KoskenkorvanLuomutila.dbo.Berry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Berry">
+          <Key>
+            <PropertyRef Name="Berry_id" />
+            <PropertyRef Name="Berryname" />
+          </Key>
+          <Property Name="Berry_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Berryname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Season" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KoskenkorvanLuomutila.dbo.GeneralKnowledge' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GeneralKnowledge">
+          <Key>
+            <PropertyRef Name="general_id" />
+            <PropertyRef Name="Berry" />
+          </Key>
+          <Property Name="general_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Berry" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Titleusage" Type="varchar" MaxLength="50" />
+          <Property Name="Titlecrowth" Type="varchar" MaxLength="50" />
+          <Property Name="Titleknowledge" Type="varchar" MaxLength="50" />
+          <Property Name="UsageKnowledge" Type="varchar(max)" />
+          <Property Name="CrowthKnowledge" Type="varchar(max)" />
+          <Property Name="HealthInfo" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KoskenkorvanLuomutila.dbo.Openinghours' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Openinghours">
+          <Key>
+            <PropertyRef Name="day_id" />
+            <PropertyRef Name="Dayofweek" />
+          </Key>
+          <Property Name="day_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dayofweek" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="closingtime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Openingtime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KoskenkorvanLuomutila.dbo.Persons' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="Person_id" />
+            <PropertyRef Name="Firstname" />
+            <PropertyRef Name="Lastname" />
+          </Key>
+          <Property Name="Person_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Age" Type="int" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="Price_id" />
+          </Key>
+          <Property Name="Price_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price_per_litre" Type="float" />
+          <Property Name="Berry" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KoskenkorvanLuomutila.dbo.Summerjob' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Summerjob">
+          <Key>
+            <PropertyRef Name="Job_id" />
+            <PropertyRef Name="Datesubmitted" />
+            <PropertyRef Name="Startingdate" />
+            <PropertyRef Name="Enddate" />
+            <PropertyRef Name="Fullname" />
+          </Key>
+          <Property Name="Job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datesubmitted" Type="datetime" Nullable="false" />
+          <Property Name="Startingdate" Type="date" Nullable="false" />
+          <Property Name="Enddate" Type="date" Nullable="false" />
+          <Property Name="Fullname" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KoskenkorvanLuomutila.dbo.User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="KoskenkorvanLuomutilaModelStoreContainer">
+          <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Appointment].[Appointment_id] AS [Appointment_id], 
+    [Appointment].[Name] AS [Name], 
+    [Appointment].[Phone] AS [Phone], 
+    [Appointment].[Berry] AS [Berry], 
+    [Appointment].[Collect] AS [Collect], 
+    [Appointment].[Amount] AS [Amount], 
+    [Appointment].[Collectdate] AS [Collectdate], 
+    [Appointment].[Addeddate] AS [Addeddate]
+    FROM [dbo].[Appointment] AS [Appointment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Berry" EntityType="Self.Berry" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Berry].[Berry_id] AS [Berry_id], 
+    [Berry].[Berryname] AS [Berryname], 
+    [Berry].[Season] AS [Season]
+    FROM [dbo].[Berry] AS [Berry]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GeneralKnowledge" EntityType="Self.GeneralKnowledge" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GeneralKnowledge].[general_id] AS [general_id], 
+    [GeneralKnowledge].[Berry] AS [Berry], 
+    [GeneralKnowledge].[Titleusage] AS [Titleusage], 
+    [GeneralKnowledge].[Titlecrowth] AS [Titlecrowth], 
+    [GeneralKnowledge].[Titleknowledge] AS [Titleknowledge], 
+    [GeneralKnowledge].[UsageKnowledge] AS [UsageKnowledge], 
+    [GeneralKnowledge].[CrowthKnowledge] AS [CrowthKnowledge], 
+    [GeneralKnowledge].[HealthInfo] AS [HealthInfo]
+    FROM [dbo].[GeneralKnowledge] AS [GeneralKnowledge]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Openinghours" EntityType="Self.Openinghours" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Openinghours].[day_id] AS [day_id], 
+    [Openinghours].[Dayofweek] AS [Dayofweek], 
+    [Openinghours].[closingtime] AS [closingtime], 
+    [Openinghours].[Openingtime] AS [Openingtime]
+    FROM [dbo].[Openinghours] AS [Openinghours]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Persons].[Person_id] AS [Person_id], 
+    [Persons].[Firstname] AS [Firstname], 
+    [Persons].[Lastname] AS [Lastname], 
+    [Persons].[Email] AS [Email], 
+    [Persons].[Phone] AS [Phone], 
+    [Persons].[Age] AS [Age]
+    FROM [dbo].[Persons] AS [Persons]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Summerjob" EntityType="Self.Summerjob" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Summerjob].[Job_id] AS [Job_id], 
+    [Summerjob].[Datesubmitted] AS [Datesubmitted], 
+    [Summerjob].[Startingdate] AS [Startingdate], 
+    [Summerjob].[Enddate] AS [Enddate], 
+    [Summerjob].[Fullname] AS [Fullname]
+    FROM [dbo].[Summerjob] AS [Summerjob]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User].[User_id] AS [User_id], 
+    [User].[Username] AS [Username], 
+    [User].[Password] AS [Password]
+    FROM [dbo].[User] AS [User]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KoskenkorvanLuomutilaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="Price_id" />
+          </Key>
+          <Property Name="Price_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price_per_litre" Type="Double" />
+          <Property Name="Berry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Appointment_id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Collectdate" />
+            <PropertyRef Name="Addeddate" />
+          </Key>
+          <Property Name="Appointment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Berry" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Collect" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="1" Scale="1" />
+          <Property Name="Collectdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Addeddate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Berry">
+          <Key>
+            <PropertyRef Name="Berry_id" />
+            <PropertyRef Name="Berryname" />
+          </Key>
+          <Property Name="Berry_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Berryname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Season" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GeneralKnowledge">
+          <Key>
+            <PropertyRef Name="general_id" />
+            <PropertyRef Name="Berry" />
+          </Key>
+          <Property Name="general_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Berry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Titleusage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Titlecrowth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Titleknowledge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsageKnowledge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CrowthKnowledge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HealthInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Openinghour">
+          <Key>
+            <PropertyRef Name="day_id" />
+            <PropertyRef Name="Dayofweek" />
+          </Key>
+          <Property Name="day_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dayofweek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="closingtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Openingtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Person_id" />
+            <PropertyRef Name="Firstname" />
+            <PropertyRef Name="Lastname" />
+          </Key>
+          <Property Name="Person_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Summerjob">
+          <Key>
+            <PropertyRef Name="Job_id" />
+            <PropertyRef Name="Datesubmitted" />
+            <PropertyRef Name="Startingdate" />
+            <PropertyRef Name="Enddate" />
+            <PropertyRef Name="Fullname" />
+          </Key>
+          <Property Name="Job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datesubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Startingdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Enddate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="KoskenkorvanLuomutilaEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Prices" EntityType="Self.Price" />
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Berries" EntityType="Self.Berry" />
+          <EntitySet Name="GeneralKnowledges" EntityType="Self.GeneralKnowledge" />
+          <EntitySet Name="Openinghours" EntityType="Self.Openinghour" />
+          <EntitySet Name="Persons" EntityType="Self.Person" />
+          <EntitySet Name="Summerjobs" EntityType="Self.Summerjob" />
+          <EntitySet Name="Users" EntityType="KoskenkorvanLuomutilaModel.User" />
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KoskenkorvanLuomutilaModelStoreContainer" CdmEntityContainer="KoskenkorvanLuomutilaEntities3">
+          <EntitySetMapping Name="Prices">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.Price">
+              <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="Price_id" ColumnName="Price_id" />
+                <ScalarProperty Name="Price_per_litre" ColumnName="Price_per_litre" />
+                <ScalarProperty Name="Berry" ColumnName="Berry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="Appointment_id" ColumnName="Appointment_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Berry" ColumnName="Berry" />
+                <ScalarProperty Name="Collect" ColumnName="Collect" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Collectdate" ColumnName="Collectdate" />
+                <ScalarProperty Name="Addeddate" ColumnName="Addeddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Berries">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.Berry">
+              <MappingFragment StoreEntitySet="Berry">
+                <ScalarProperty Name="Berry_id" ColumnName="Berry_id" />
+                <ScalarProperty Name="Berryname" ColumnName="Berryname" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralKnowledges">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.GeneralKnowledge">
+              <MappingFragment StoreEntitySet="GeneralKnowledge">
+                <ScalarProperty Name="general_id" ColumnName="general_id" />
+                <ScalarProperty Name="Berry" ColumnName="Berry" />
+                <ScalarProperty Name="Titleusage" ColumnName="Titleusage" />
+                <ScalarProperty Name="Titlecrowth" ColumnName="Titlecrowth" />
+                <ScalarProperty Name="Titleknowledge" ColumnName="Titleknowledge" />
+                <ScalarProperty Name="UsageKnowledge" ColumnName="UsageKnowledge" />
+                <ScalarProperty Name="CrowthKnowledge" ColumnName="CrowthKnowledge" />
+                <ScalarProperty Name="HealthInfo" ColumnName="HealthInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Openinghours">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.Openinghour">
+              <MappingFragment StoreEntitySet="Openinghours">
+                <ScalarProperty Name="day_id" ColumnName="day_id" />
+                <ScalarProperty Name="Dayofweek" ColumnName="Dayofweek" />
+                <ScalarProperty Name="closingtime" ColumnName="closingtime" />
+                <ScalarProperty Name="Openingtime" ColumnName="Openingtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="Person_id" ColumnName="Person_id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Summerjobs">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.Summerjob">
+              <MappingFragment StoreEntitySet="Summerjob">
+                <ScalarProperty Name="Job_id" ColumnName="Job_id" />
+                <ScalarProperty Name="Datesubmitted" ColumnName="Datesubmitted" />
+                <ScalarProperty Name="Startingdate" ColumnName="Startingdate" />
+                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="KoskenkorvanLuomutilaModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
